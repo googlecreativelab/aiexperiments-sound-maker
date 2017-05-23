@@ -1,0 +1,54 @@
+@import "common.scss";
+
+#selector {
+	width: 90%;
+	min-width: 300px;
+	max-width: 600px;
+
+	$heightCrossOver : 640px;
+	@media (max-height : $heightCrossOver){
+		top: 0px;
+		height: calc(100% - #{$keyboardHeight + $waveformHeight});
+	}
+
+	@media (min-height : $heightCrossOver){
+		$topMargin: 40px;
+		top: $topMargin;
+		height: calc(100% - #{$keyboardHeight + $waveformHeight + $topMargin});
+	}
+	position: absolute;
+	left: 50%;
+	transform : translate(-50%, 0);
+	user-select: none;
+
+	.carousel {
+		position: absolute;
+		display: inline-block;
+		z-index: 0;
+
+		&:nth-of-type(1){
+			left: 0px;
+		}
+
+		&:nth-of-type(2){
+			right: 0px;
+		}
+	}
+
+	#plusSign {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		$size : 40px;
+		width: $size;
+		height: $size;
+		line-height: $size;
+		font-size: $size;
+		text-align: center;
+		transform: translate(-50%, -50%);
+
+		&:before {
+			content : "+";
+		}
+	}
+}

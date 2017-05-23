@@ -1,0 +1,165 @@
+@import "common.scss";
+
+#about {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+	z-index: 100;
+	background-color: $backgroundColor;
+	opacity: 0;
+	pointer-events: none;
+	user-select: initial;
+	overflow-y: scroll;
+	-webkit-overflow-scrolling: touch;
+
+	&.visible {
+		opacity: 1;
+		pointer-events: initial;
+	}
+
+	#text {
+		width: 80%;
+		max-width: 800px;
+		min-width: 300px;
+		position: relative;
+		margin-top: 50px;
+		margin-bottom: 50px;
+		margin-left: auto;
+		margin-right: auto;
+		color: white;
+		font-size: 16px;
+		letter-spacing: 1.5px;
+		line-height: 1.5em;
+
+		@media (max-width: 500px){
+			font-size: 14px;
+		}
+
+		img {
+			width: 100%;
+		}
+
+		a {
+			color: $purple;
+			text-decoration: none;
+
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+
+		p {
+			margin: 30px 0 30px 0;
+		}
+
+		#title {
+			font-size: 1.5em;
+			letter-spacing: 2px;
+			margin-left: 0px;
+		}
+
+		div {
+			position: relative;
+			max-width: 700px;
+			margin-left: auto;
+			margin-right: auto;
+
+			.audioSample {
+				width: 10%;
+				height: 100%;
+				top: -3px;
+				position: absolute;
+				transform: translate(-50%, 0px);
+				cursor: pointer;
+				background-image : url(../images/play_circle.svg);
+				background-size: 100% auto;
+				background-position: center center;
+				background-repeat: no-repeat;
+				opacity: 0.8;
+				transition: opacity 0.1s;
+
+				&:hover {
+					opacity: 1;
+				}
+
+				&.playing {
+					background-image : url(../images/pause_circle.svg);
+				}
+			}
+
+			&#mixer .audioSample{
+				right: 8%;
+			}
+
+			&#nsynth .audioSample{
+				right: 6.5%;
+			}
+
+			&#cat .audioSample:nth-child(2){
+				left: 9%;
+			}
+
+			&#cat .audioSample:nth-child(3){
+				right: 15%;
+			}
+		}
+
+	}
+
+}
+
+
+$margin: 15px;
+$size : 30px;
+#closeButton, #openButton {
+	position: fixed;
+	top: $margin;
+	right: $margin;
+	width: $size;
+	height: $size;
+	cursor: pointer;
+	opacity: 0.4;
+	transition: transform 0.1, opacity 0.1;
+	z-index: 1;
+
+	&:hover {
+		opacity: 1;
+
+		&:active {
+			transform: scale(1.1);
+		}
+	}
+}
+
+#closeButton {
+	background-image : url(../images/close.svg);
+	background-size: 100% 100%;
+
+	@media (min-width: 800px){
+
+		right: 40px;
+		top: 30px;
+	}
+}
+
+#openButton {
+
+	$openSize: 26px;
+	$openMargin: ($size - $openSize)/2 + $margin;
+	top: $openMargin;
+	right: $openMargin;
+	width: $openSize;
+	height: $openSize;
+	background-color: white;
+	border-radius: 50%;
+	color: $backgroundColor;
+	line-height: $openSize;
+	text-align: center;
+	font-weight: bold;
+
+	&:before {
+		content: "?";
+	}
+}

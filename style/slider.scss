@@ -1,0 +1,87 @@
+@import "common.scss";
+
+$sliderHeight : 8px;
+$thumbSize : 28px;
+$borderWidth : $sliderHeight;
+
+#slider {
+	position: absolute;
+	max-width: 280px;
+	min-width: 100px;
+	width: 40%;
+	bottom: $keyboardHeight + $waveformHeight + $sliderHeight;
+	left: 50%;
+	height: $sliderHeight;
+	transform: translate(-50%, 0);
+	padding: 0px;
+	z-index: 10;
+	user-select: none;
+	&:focus {
+		outline: none;
+	}
+
+	input {
+		appearance: none;
+		position: absolute;
+		height: $sliderHeight;
+		margin: 0px;
+		top: 0px;
+		left: 0px;
+		width: 100%;
+		border-radius: $sliderHeight/2;
+
+		&:focus {
+			outline: none;
+		}
+
+		@mixin thumb {
+			appearance: none;
+			$actualThumb : $thumbSize + 8px;
+			width: $actualThumb;
+			height: $actualThumb;
+			margin-top: -$actualThumb/2 + $sliderHeight/2;
+			border-radius: 50%;
+			opacity: 0;
+			background-color: transparent;
+			cursor: pointer;
+			cursor: hand;
+		}
+
+		@mixin track {
+			height: $sliderHeight;
+			cursor: pointer;
+			border-radius: $sliderHeight/2;
+			background: linear-gradient(90deg, $purple, $teal); 
+		}
+
+		&::-webkit-slider-thumb{ @include thumb; } 
+		&::-moz-range-thumb { @include thumb; }
+		&::-ms-thumb { @include thumb; }
+
+		&::-webkit-slider-runnable-track { @include track; }
+		&::-moz-range-track { @include track; }
+		&::-ms-track { @include track; }
+	}
+
+	#thumb {
+		width: $thumbSize;
+		height: $thumbSize;
+		position: absolute;
+		margin-top: -$thumbSize/2 + $sliderHeight/2;
+		pointer-events: none;
+		border-radius: 50%;
+		transition: transform 0.1s;
+		cursor: pointer;
+
+		&.hover {
+			transform: scale(1.1);
+		}
+
+		&.active {
+			transform: scale(0.95);
+		}
+
+		// border: $borderWidth solid transparent;
+		// box-sizing: border-box;
+	}
+}

@@ -1,0 +1,351 @@
+@import "common.scss";
+
+
+#splash {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	z-index: 100;
+	background-color: $backgroundColor;
+	transition: opacity 0.2s;
+
+	&.invisible {
+		pointer-events: none;
+		opacity: 0;
+	}
+
+
+
+	#titleContainer {
+		$margin: 35px;
+
+		position: absolute;
+		top: 40%;
+		left: 50%;
+		width: 260px;
+		transform: translate(-50%, -50%);
+
+		#title {
+			text-transform: uppercase;
+			text-align: center;
+			font-size: 30px;
+			letter-spacing: 3px;
+			color: white;
+		}
+
+		#subtitle {
+			margin-top: $margin;
+			text-align: center;
+			color: white;
+			opacity: 0.6;
+			letter-spacing: 1px;
+			word-spacing: 2px;
+		}
+
+		#howItWorks {
+			width: auto;
+			margin-top: $margin;
+			text-align: center;
+			color: white;
+			opacity: 1;
+			cursor: pointer;
+			letter-spacing: 2px;
+			word-spacing: 2px;	
+			display: inline-block;
+			position: relative;
+			font-size: 14px;
+			$iconSize : 18px;
+			// left: calc(50% + #{$iconSize/2});
+			left: 50%;
+			text-decoration: underline;
+			transform: translate(-50%, 0);
+			transition: opacity 0.1s;
+			color: $purple;
+			// text-transform: uppercase;
+
+			&:hover {
+				opacity: 0.6;
+			}
+		}
+
+		#playButton {
+			$width: 140px;
+			$height: 50px;
+			$borderSize: 2px;
+			$borderRad : 3px;
+			position: relative;
+			width: $width;
+			height: $height;
+			margin-top: $margin;
+			text-align: center;
+			margin-left: auto;
+			margin-right: auto;
+			border-radius: $borderRad;
+			background: linear-gradient(90deg, $teal, $purple);
+			cursor: pointer;
+			transition: transform 0.1s;
+
+			&:hover {
+				transform: scale(1.1);
+
+				&:active {
+					transform: scale(1.05);
+				}
+			}
+
+			#playButtonFill {
+				$width: $width - $borderSize*2;
+				$height: $height - $borderSize*2;
+				width: $width;
+				height: $height;
+				line-height: $height;
+				position: absolute;
+				left: $borderSize;
+				top: $borderSize;
+				border-radius: $borderRad - $borderSize + 1;
+				background-color: $backgroundColor;
+
+				$margin: 33px;
+
+				#text {
+					right: $margin;
+					color: white;
+				}
+
+				#image {
+					left: $margin;
+					width: 30px;
+					background-image: url(../images/keyboard_icon.svg);
+					background-position: center center;
+					background-size: 100% auto;
+					background-repeat: no-repeat;
+					margin-top: 1px
+				}
+
+				#text, #image {
+					position: absolute;
+					height: 100%;
+					top: 0px;
+				}
+
+			}
+		}
+	}
+
+	// LOADER WAVEFORM
+	$waveformHeight : 120px;
+
+	canvas {
+		width: 100%;
+		height: $waveformHeight;
+		position: absolute;
+		bottom: 15%;
+
+		@media (max-width: $smallScreen){
+			height: 60px;
+			bottom: 90px;
+		}
+
+		@media (max-height: 490px){
+			height: 40px;
+			bottom: 90px;
+		}
+	}
+
+	$badgeWidth : 90px;
+	$badgeHeight: 45px;
+	$badgeMargin : 10px;
+	$badegOpacity: 0.7;
+
+	$smallBadgeWidth : 90px;
+	$smallBadgeHeight: 40px;
+	$smallBadgeMargin: 8px;
+
+	#badges {
+
+		position: absolute;
+		display: inline-block;
+		bottom: $badgeMargin;
+		left: $badgeMargin;
+
+		@media (max-width: $smallScreen) {
+			// bottom: $badgeMargin * 0.5;
+			// display: none;
+			bottom: 30px;
+			$badgesWidth : $smallBadgeWidth * 3 + $smallBadgeMargin * 3 + 2px;
+			width: $badgesWidth;
+			left: 50%;
+			margin-left: -$badgesWidth/2;
+			// left: $smallBadgeMargin * 2;			
+			// left: 50%;
+			// transform: translate(-50%, 0);
+		}
+
+		.badge {
+			display: inline-block;
+			position: relative;
+			margin-right: $badgeMargin;
+			width: $badgeWidth;
+			height: $badgeHeight;
+			background-repeat: no-repeat;
+			background-size: 100% 100%;
+			opacity: $badegOpacity;
+			overflow: hidden;
+
+			@media (max-width: $smallScreen) {
+				width: $smallBadgeWidth;
+				height: $smallBadgeHeight;	
+				font-size: 10px!important;
+				margin-right: $smallBadgeMargin;
+				opacity: 1;
+			}
+		}
+
+		#aiExperiments {
+			background-image: url(../images/badgeAI_master.svg);
+			&:hover {
+				opacity: 1;
+				&:active {
+					opacity: 0.3;
+				}
+			}
+		}
+
+		#googleFriends {
+			cursor: initial;
+			background-image: url(../images/badgeFriends_master.svg);	
+			margin-right: 0px;
+		}
+
+
+		#magentaLink {
+			font-weight: bold;
+			font-size: 12px;
+			margin-left: 0px;
+		    margin-right: 0px;
+		    color: white;
+		    overflow: visible;
+
+			&:hover {
+				opacity: 1;
+			}
+
+			@media (max-width: $smallScreen) {
+				font-size: 7px;
+			}
+
+
+			div {
+				display: inline-block;
+				position: relative;
+			}
+
+			$imgSize : $badgeHeight;
+			$smallImg : $smallBadgeHeight;
+			#img {
+				background-image: url(../images/magenta_bw_logo.png);
+				background-size: 90% 90%;
+				background-position: left center;
+				background-repeat: no-repeat;
+				width: $imgSize;
+				height: $imgSize;
+				float: left;
+
+				@media (max-width: $smallScreen) {
+					width: $smallImg;
+					height: $smallImg;
+				}
+			}
+
+			#text {
+				margin-top: 7px;
+				float: right;
+				height: 100%;
+				position: absolute;
+				width: $badgeWidth;
+
+				@media (max-width: $smallScreen) {
+					margin-top: 7px;
+					width: $smallBadgeWidth - $smallImg;
+				}
+
+				span {
+					color: white;
+					text-decoration: underline;
+					cursor: pointer;
+					&:hover:active {
+						color: white;
+					}
+				}
+			}
+
+		}
+
+		.badgeBreak{
+			display: inline-block;
+			position: relative;
+			margin-right: $badgeMargin;
+
+			$breakScale : 0.95;
+
+			$breakHeight: $badgeHeight * $breakScale;
+			height: $breakHeight;
+			background-color: white;
+			opacity: $badegOpacity / 2;
+			width: 1px;
+
+			@media (max-width: $smallScreen) {
+				$smallBreakHeight: $smallBadgeHeight * $breakScale;
+				height: $smallBreakHeight;
+				margin-right: $smallBadgeMargin;
+			}
+		}
+	}
+
+
+
+	#privacyAndTerms {
+		position: absolute;
+		bottom: $badgeMargin;
+		right: $badgeMargin;
+		width: auto;
+		font-weight: normal;
+
+		@media (max-width: $smallScreen) {
+			// display: none;
+			bottom: $smallBadgeMargin;
+			left: 50%;
+			right: initial;
+			transform: translate(-50%, 0);
+
+			* {
+				font-size: 8px!important;
+			}
+		}
+
+		* {
+			height: 14px;
+			line-height: 14px;
+			font-size: 10px;
+			color: white;
+			display: inline;
+			opacity: $badegOpacity;
+			margin: 2px;
+		}
+
+		a {
+			text-decoration: none;
+			cursor: pointer;
+
+			&:hover {
+				opacity: 1;
+
+				&:active {
+					opacity: 0.3;
+				}
+			}
+		}
+	}
+}

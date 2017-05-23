@@ -1,0 +1,45 @@
+#orientation {
+
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+	background-color: black;
+	z-index: 100000000;
+	display: none;
+
+	#text {
+		$height: 15px;
+		width: 200px;
+		height: $height;
+		line-height: $height;
+		font-size: $height;
+		text-align: center;
+		position: absolute;
+		text-transform: uppercase;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+
+	#rotatePhone {
+		$size : 50px;
+		width: $size;
+		height: $size;
+		position: absolute;
+		top: calc(50% - #{$size});
+		left: 50%;
+		transform: translate(-50%, -50%);	
+		background-image : url(../images/rotatePhone.svg);
+		background-repeat: no-repeat;
+		background-position: center center;
+		// .st0{fill:#fff;}
+
+	}
+
+
+	@media all and (orientation:landscape) {
+		display: inline-block;
+	}
+}

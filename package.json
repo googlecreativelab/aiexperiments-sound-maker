@@ -1,0 +1,32 @@
+{
+  "name": "nsynth-sound-maker",
+  "version": "1.0.0",
+  "description": "Make unusual new sounds with machine learning",
+  "main": "index.html",
+  "author": "Yotam Mann",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "autoprefixer-loader": "^3.2.0",
+    "babel-core": "^6.24.1",
+    "babel-loader": "^6.4.1",
+    "babel-polyfill": "^6.23.0",
+    "babel-preset-es2015": "^6.24.1",
+    "chroma-js": "^1.3.3",
+    "css-loader": "^0.28.0",
+    "domready": "^1.0.8",
+    "exports-loader": "^0.6.4",
+    "file-loader": "^0.11.1",
+    "iscroll": "^5.2.0",
+    "node-sass": "^4.5.2",
+    "pepjs": "^0.4.3",
+    "sass-loader": "^6.0.3",
+    "startaudiocontext": "^1.2.1",
+    "style-loader": "^0.16.1",
+    "swiper": "^3.4.2",
+    "tone": "git+https://github.com/Tonejs/Tone.js.git#7331a681048181c44576bc0845880dfb8aa1a2ef",
+    "tween.js": "^16.6.0",
+    "url-loader": "^0.5.8",
+    "webmidi": "^2.0.0-rc.5",
+    "webpack": "^2.4.1"
+  }
+}

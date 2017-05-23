@@ -1,0 +1,23 @@
+@import "common.scss";
+
+html, body {
+	background-color: $backgroundColor;
+	color: white;
+	font-family: 'Quicksand', sans-serif;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+	margin: 0px;
+	overflow: hidden;
+	user-select: none;
+}
+
+#teal {
+	background-color: $teal;
+}
+
+#purple {
+	background-color: $purple;
+}

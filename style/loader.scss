@@ -1,0 +1,84 @@
+@import "common.scss";
+
+$transitionTime:0.1s;
+
+#keyboardContainer, #waveform {
+
+	transition: opacity $transitionTime;
+
+	&.loading {
+		pointer-events: none;
+		opacity: 0.2;
+	}
+}
+
+#loader {
+
+	$size: 100px;
+
+	width: 100%;
+	height: $size;
+	z-index: 10;
+	position: absolute;
+	bottom: $keyboardHeight;
+	margin-bottom: -$size/2;
+	left: 0px;
+	opacity: 0;
+	pointer-events: none;
+
+	&.visible {
+		transition: opacity $transitionTime;
+		opacity: 1;
+	}
+
+	.circular {
+		animation: rotate 2s linear infinite;
+		height: $size;
+		transform-origin: center center;
+		width: $size;
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		margin: auto;
+	}
+
+	.path {
+		stroke-dasharray: 1, 200;
+		stroke-dashoffset: 0;
+		animation: dash 1.5s ease-in-out infinite, color 6s ease-in-out infinite;
+		stroke-linecap: round;
+	}
+
+	@keyframes rotate {
+		100% {
+			transform: rotate(360deg);
+		}
+	}
+
+	@keyframes dash {
+		0% {
+			stroke-dasharray: 1, 200;
+			stroke-dashoffset: 0;
+		}
+		50% {
+			stroke-dasharray: 89, 200;
+			stroke-dashoffset: -35px;
+		}
+		100% {
+			stroke-dasharray: 89, 200;
+			stroke-dashoffset: -124px;
+		}
+	}
+
+	@keyframes color {
+		100%,
+		0% {
+			stroke: $purple;
+		}
+		66% {
+			stroke: $teal;
+		}
+	}
+}

@@ -1,0 +1,113 @@
+@import "common.scss";
+
+$borderWidth : 2px;
+$hoverColor : lighten($gray, 10%);
+
+@keyframes attackDecay {
+	0% {
+		background-color: inherit;
+	}
+	100% {
+		background-color: $backgroundColor;
+	}
+}
+
+@keyframes attackDecayHover {
+	0% {
+		background-color: inherit;
+	}
+	100% {
+		background-color: $hoverColor;
+	}
+}
+
+@keyframes release {
+	0% {
+		background-color: inherit;
+	}
+	100% {
+		background-color: $backgroundColor
+	}
+}
+
+#keyboardContainer {
+	height: $keyboardHeight;
+	position: absolute;
+	bottom: 0px;
+	left: 50%;
+	transform: translate(-50%, 0);
+	width: 100%;
+	max-width: 600px;
+	overflow: hidden;
+
+	#keyboard {
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		height: 100%;
+		width: calc(100% - 2 * #{$borderWidth});
+		user-select: none;
+		-webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+		pointer-events: none;
+
+		background-color: blue;
+
+		&.active {
+			pointer-events: initial;
+		}
+
+		.key {
+			position: absolute;
+			height: calc(100% - 2 * #{$borderWidth});
+			width: 10px;
+			left: 0px;
+			top: 0px;
+			border-width: $borderWidth;
+			border-style: solid;
+			border-color: white;
+			z-index: 0;
+			cursor: pointer;
+			background-color: $backgroundColor;
+
+			&.accidental {
+				z-index: 1;
+				height: 50%;
+			}
+
+			&:hover, &.active {
+				animation-fill-mode: forwards;
+				animation-duration: 4s;
+				animation-timing-function: ease-out;
+			}
+			&:hover.active {
+				animation-name: attackDecayHover;
+			}
+
+			&.active {
+				animation-name: attackDecay;
+			}
+		}
+
+		$purpleHighlight: $teal;
+
+		.key {
+			background-color: $backgroundColor;
+			border-color: $gray;
+
+			&:hover {
+				background-color: $hoverColor;
+			}
+
+			&.active {
+				background-color: $purpleHighlight;
+			}
+		}
+	}
+
+}
+
+.mobile #keyboard {
+	.key:hover:not(.active) {
+		background-color: $backgroundColor!important;
+	}
+}
