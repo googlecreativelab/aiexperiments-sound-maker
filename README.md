@@ -4,6 +4,11 @@ This experiment lets you play with new sounds created with machine learning. It'
 
 NSynth lets you select and combine two sound sources. Use the slider to change the interpolation between the two sound sources.
 
+
+## CREDITS
+
+Built by [Yotam Mann](https://github.com/tambien) with friends on the Magenta and Creative Lab teams at Google. It uses [TensorFlow](https://tensorflow.org), [Tone.js](https://github.com/Tonejs/Tone.js) and open-source tools from the [Magenta](https://magenta.tensorflow.org/) project. Check out more at [A.I. Experiments](https://aiexperiments.withgoogle.com).
+
 ## Building
 
 To build and run your own, first make sure that you have [Node.js](http://nodejs.org/) and [webpack](https://webpack.github.io/) installed. 
